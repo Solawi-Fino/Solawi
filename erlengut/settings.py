@@ -124,8 +124,6 @@ EMAIL_USE_SSL = os.environ.get('JUNTAGRICO_EMAIL_SSL', 'False')=='True'
 
 EMAIL_BACKEND='juntagrico.backends.email.EmailBackend'
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-
 
 ADMINS = [
     ('Admin', os.environ.get('JUNTAGRICO_ADMIN_EMAIL')),
