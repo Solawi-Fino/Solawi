@@ -2,6 +2,7 @@
 Django settings for erlengut project.
 """
 
+from juntagrico import defaults
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,16 +26,18 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    'juntagrico.apps.JuntagricoAdminConfig',
     'erlengut',
     'juntagrico_billing',
     'juntagrico',
-    'fontawesomefree',
     'import_export',
     'impersonate',
     'crispy_forms',
     'adminsortable2',
     'polymorphic',
+    'crispy_bootstrap4',
+    'django_select2',
+    'djrichtextfield',
 ]
 
 ROOT_URLCONF = 'erlengut.urls'
@@ -79,6 +82,8 @@ WSGI_APPLICATION = 'erlengut.wsgi.application'
 
 LANGUAGE_CODE = 'de'
 
+DJRICHTEXTFIELD_CONFIG = defaults.richtextfield_config(LANGUAGE_CODE)
+
 SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
@@ -116,6 +121,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('JUNTAGRICO_EMAIL_PASSWORD')
 EMAIL_PORT = int(os.environ.get('JUNTAGRICO_EMAIL_PORT', '25' ))
 EMAIL_USE_TLS = os.environ.get('JUNTAGRICO_EMAIL_TLS', 'False')=='True'
 EMAIL_USE_SSL = os.environ.get('JUNTAGRICO_EMAIL_SSL', 'False')=='True'
+
+EMAIL_BACKEND='juntagrico.backends.email.EmailBackend'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
