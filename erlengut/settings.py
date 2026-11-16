@@ -222,3 +222,6 @@ LOGGING = {
         },
     },
 } 
+MEMBERSHIP = {
+    'enable': False,
+}
